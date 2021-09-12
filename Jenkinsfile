@@ -6,12 +6,12 @@ node {
         commit_id = readFile('.git/commit-id').trim()
         sh """echo ${commit_id}"""
     }
-//     stage('docker build/push'){
-//         docker.withRegistry('https://205263170971.dkr.ecr.us-west-2.amazonaws.com',
-//         'ecr:us-west-2:awsuserid'){
-//              def app = docker.build("bigdataservice:bigdata-${commit_id}", '.').push()
-//         }
-//     }
+    stage('docker build/push'){
+        docker.withRegistry('https://205263170971.dkr.ecr.us-west-2.amazonaws.com',
+        'ecr:us-west-2:awsuserid'){
+             def app = docker.build("bigdataservice:bigdata-${commit_id}", '.').push()
+        }
+    }
 //     stage('aws ecs'){
 //         sh 'chmod +x ./awsfile.sh'
 //         sh """echo ${commit_id}"""

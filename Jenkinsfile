@@ -4,6 +4,7 @@ node {
         checkout scm
         sh "git rev-parse --short HEAD > .git/commit-id"
         commit_id = readFile('.git/commit-id').trim()
+        sh """echo ${commit_id}"""
     }
 //     stage('docker build/push'){
 //         docker.withRegistry('https://205263170971.dkr.ecr.us-west-2.amazonaws.com',
